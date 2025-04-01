@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css"
-import { BsEnvelope } from "react-icons/bs"
+import { BsEnvelope, BsEyeFill, BsEyeSlashFill } from "react-icons/bs"
+import { Link } from "react-router-dom"
 
 export default function SignUp() {
+
+    const [form, setForm] = useState({
+        name_congregation: '',
+        city: '',
+        state: '',
+        name_responsible: '',
+        phone: '',
+        email: '',
+        cpf: '',
+        password: { value: '', visible: false }
+    })
+
     return (
         <div className="main-sign">
             <h1 className="title-sign">Cadastre-se</h1>
@@ -11,47 +24,87 @@ export default function SignUp() {
 
                 <div className="container-input-sign">
                     <span className="title-input-sign">Congregação</span>
-                    <input placeholder="Nome da Congregação" />
+                    <input placeholder="Nome da Congregação"
+                        value={form.name_congregation}
+                        onChange={event => setForm(prev => ({ ...prev, name_congregation: event.target.value }))}
+                    />
                 </div>
 
                 <div className="container-input-sign">
                     <span className="title-input-sign">Cidade</span>
-                    <input placeholder="Digite sua Cidade" />
+                    <input placeholder="Digite sua Cidade"
+                        value={form.city}
+                        onChange={event => setForm(prev => ({ ...prev, city: event.target.value }))}
+                    />
                 </div>
 
                 <div className="container-input-sign">
                     <span className="title-input-sign">Estado</span>
-                    <input placeholder="Ex: RJ" />
+                    <input placeholder="Ex: RJ"
+                        value={form.state}
+                        onChange={event => setForm(prev => ({ ...prev, state: event.target.value }))}
+                        maxLength={2}
+                        autoCapitalize="characters"
+                    />
                 </div>
 
                 <div className="container-input-sign">
                     <span className="title-input-sign">Responsável</span>
-                    <input placeholder="Nome do Responsável" />
+                    <input placeholder="Nome do Responsável"
+                        value={form.name_responsible}
+                        onChange={event => setForm(prev => ({ ...prev, name_responsible: event.target.value }))}
+                    />
                 </div>
 
                 <div className="container-input-sign">
                     <span className="title-input-sign">Telefone</span>
-                    <input placeholder="Ex: +55XXxxxxxxxxx" />
+                    <input placeholder="Ex: +55XXxxxxxxxxx"
+                        value={form.phone}
+                        onChange={event => setForm(prev => ({ ...prev, phone: event.target.value }))}
+                    />
                 </div>
 
                 <div className="container-input-sign">
                     <span className="title-input-sign">E-mail</span>
-                    <input placeholder="Insira seu e-mail" />
+                    <input placeholder="Insira seu e-mail"
+                        value={form.email}
+                        onChange={event => setForm(prev => ({ ...prev, email: event.target.value }))}
+                    />
                 </div>
 
                 <div className="container-input-sign">
                     <span className="title-input-sign">CPF</span>
-                    <input placeholder="Ex: 68754893578" />
+                    <input placeholder="Ex: 68754893578"
+                        value={form.cpf}
+                        onChange={event => setForm(prev => ({ ...prev, cpf: event.target.value }))}
+                        type="number"
+                    />
                 </div>
 
                 <div className="container-input-sign">
                     <span className="title-input-sign">Senha</span>
-                    <input placeholder="Insira a senha de 4 dígitos" />
+
+                    <div className="container-password">
+                        <input placeholder="Insira a senha de 4 dígitos"
+                            value={form.password.value}
+                            onChange={event => setForm(prev => ({ ...prev, password: { ...prev.password, value: event.target.value } }))}
+                            maxLength={4}
+                            type={form.password.visible ? 'text' : 'password'}
+                        />
+                        <span
+                            onClick={() => setForm(prev => ({ ...prev, password: { ...prev.password, visible: !prev.password.visible } }))}
+                            style={{ position: 'absolute', right: 8, top: 3 }}
+                        >
+                            {!form.password.visible
+                                ? <BsEyeFill color="gray" size={22} />
+                                : <BsEyeSlashFill color="gray" size={22} />}
+                        </span>
+                    </div>
                 </div>
 
                 <button className="button-confirm-sign">Cadastrar</button>
 
-                <span className="has-account-label">Já possui uma conta? Faça login</span>
+                <Link to="/signIn" className="has-account-label" >Já possui uma conta? Faça login</Link>
 
                 <div className="container-help-sign">
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>

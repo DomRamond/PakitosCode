@@ -1,3 +1,21 @@
+/* Remove os botões de aumentar/diminuir (spinner) */
+input[type="number"] {
+    -moz-appearance: textfield;
+    /* Firefox */
+    -webkit-appearance: none;
+    /* Chrome, Safari, Opera */
+    appearance: none;
+    /* Para outros navegadores */
+}
+
+/* Em alguns navegadores, ainda pode ser necessário remover a borda do campo */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
 .main-sign {
     background-color: black;
     display: flex;
@@ -64,21 +82,33 @@ input::placeholder {
 .has-account-label {
     color: rgb(59, 137, 255);
     margin: 10px 0;
+    text-decoration: none;
 }
 
 .help-label-sign {
     color: rgb(182, 182, 182);
 }
+
 .container-help-sign {
     display: flex;
     flex-direction: column;
 }
+
 .icon-email-sign {
     align-self: center;
     margin: 10px 0;
 }
+
 .separator-sign {
     background-color: rgb(182, 182, 182);
     height: 2px;
     flex: 1;
+}
+
+.container-password {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    position: relative;
 }
