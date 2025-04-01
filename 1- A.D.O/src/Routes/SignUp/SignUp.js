@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./styles.css"
+import "./mobileStyles.css"
 import { BsEnvelope, BsEyeFill, BsEyeSlashFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
 

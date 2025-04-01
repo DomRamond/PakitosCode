@@ -1,0 +1,13 @@
+@media (max-width: 600px) {
+    .container-form-sign {
+        width: 90%;
+    }
+
+    .has-account-label {
+        font-size: 10pt;
+    }
+
+    .help-label-sign {
+        font-size: 10pt;
+    }
+}
