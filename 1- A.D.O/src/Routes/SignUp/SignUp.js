@@ -35,6 +35,11 @@ export default function SignUp() {
                 </div>
 
                 <div className="container-input-sign">
+                    <span className="title-input-sign">E-mail</span>
+                    <input placeholder="Insira seu e-mail" />
+                </div>
+
+                <div className="container-input-sign">
                     <span className="title-input-sign">CPF</span>
                     <input placeholder="Ex: 68754893578" />
                 </div>
