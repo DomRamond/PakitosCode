@@ -34,10 +34,10 @@ export default function SignUp() {
 
     return (
         <div className="main-sign">
-            <h1 className="title-sign">Cadastre-se</h1>
+
 
             <form className="container-form-sign" onSubmit={(event) => event.preventDefault()}>
-
+                <h1 className="title-sign">Cadastre-se</h1>
                 <div className="container-input-sign">
                     <span className="title-input-sign">Congregação</span>
                     <input placeholder="Nome da Congregação"
@@ -54,7 +54,7 @@ export default function SignUp() {
                     />
                 </div>
 
-                <div className="container-input-sign">
+                <div className="container-input-sign" id="container-input-state">
                     <span className="title-input-sign">Estado</span>
                     <input placeholder="Ex: RJ"
                         value={form.state}
@@ -64,7 +64,7 @@ export default function SignUp() {
                     />
                 </div>
 
-                <div className="container-input-sign">
+                <div className="container-input-sign" >
                     <span className="title-input-sign">Responsável</span>
                     <input placeholder="Nome do Responsável"
                         value={form.name_responsible}
@@ -109,11 +109,11 @@ export default function SignUp() {
                         />
                         <span
                             onClick={() => setForm(prev => ({ ...prev, password: { ...prev.password, visible: !prev.password.visible } }))}
-                            style={{ position: 'absolute', right: 8, top: 3 }}
+                            style={{ position: 'absolute', right: 8, top: 4, cursor: 'pointer' }}
                         >
                             {!form.password.visible
-                                ? <BsEyeFill color="gray" size={22} />
-                                : <BsEyeSlashFill color="gray" size={22} />}
+                                ? <BsEyeFill color="#5ca9e7" size={20} />
+                                : <BsEyeSlashFill color="#5ca9e7" size={20} />}
                         </span>
                     </div>
                 </div>
