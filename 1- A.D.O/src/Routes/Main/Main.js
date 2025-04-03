@@ -17,7 +17,7 @@ export default function Main() {
             width: "100%",
             minHeight: "100dvh"
         }}>
-            <Menu />
+            <Menu item_active={1}/>
 
         </div>
     )
