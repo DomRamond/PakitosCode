@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css"
 import "./mobileStyles.css"
 import { BsEnvelope, BsEyeFill, BsEyeSlashFill } from "react-icons/bs"
 import { Link } from "react-router-dom"
+import { getAuth } from "firebase/auth";
+import { createUser } from "./Autentication"
+import { createDocs } from "./CreateDocs";
 
 export default function SignUp() {
 
@@ -17,12 +20,24 @@ export default function SignUp() {
         password: { value: '', visible: false }
     })
 
+    useEffect(() => {
+        console.log(getAuth().currentUser)
+    }, [])
+
+    const handleConfirm = (email, password, form) => {
+        createUser(email, password)
+            .then(res => {
+                createDocs(form, res.user.uid)
+            })
+            .catch(err => console.log(err))
+    }
+
     return (
         <div className="main-sign">
-            <h1 className="title-sign">Cadastre-se</h1>
 
-            <form className="container-form-sign">
 
+            <form className="container-form-sign" onSubmit={(event) => event.preventDefault()}>
+                <h1 className="title-sign">Cadastre-se</h1>
                 <div className="container-input-sign">
                     <span className="title-input-sign">Congregação</span>
                     <input placeholder="Nome da Congregação"
@@ -39,7 +54,7 @@ export default function SignUp() {
                     />
                 </div>
 
-                <div className="container-input-sign">
+                <div className="container-input-sign" id="container-input-state">
                     <span className="title-input-sign">Estado</span>
                     <input placeholder="Ex: RJ"
                         value={form.state}
@@ -49,7 +64,7 @@ export default function SignUp() {
                     />
                 </div>
 
-                <div className="container-input-sign">
+                <div className="container-input-sign" >
                     <span className="title-input-sign">Responsável</span>
                     <input placeholder="Nome do Responsável"
                         value={form.name_responsible}
@@ -86,24 +101,26 @@ export default function SignUp() {
                     <span className="title-input-sign">Senha</span>
 
                     <div className="container-password">
-                        <input placeholder="Insira a senha de 4 dígitos"
+                        <input placeholder="Insira a senha de 6 dígitos"
                             value={form.password.value}
                             onChange={event => setForm(prev => ({ ...prev, password: { ...prev.password, value: event.target.value } }))}
-                            maxLength={4}
+                            maxLength={6}
                             type={form.password.visible ? 'text' : 'password'}
                         />
                         <span
                             onClick={() => setForm(prev => ({ ...prev, password: { ...prev.password, visible: !prev.password.visible } }))}
-                            style={{ position: 'absolute', right: 8, top: 3 }}
+                            style={{ position: 'absolute', right: 8, top: 4, cursor: 'pointer' }}
                         >
                             {!form.password.visible
-                                ? <BsEyeFill color="gray" size={22} />
-                                : <BsEyeSlashFill color="gray" size={22} />}
+                                ? <BsEyeFill color="#5ca9e7" size={20} />
+                                : <BsEyeSlashFill color="#5ca9e7" size={20} />}
                         </span>
                     </div>
                 </div>
 
-                <button className="button-confirm-sign">Cadastrar</button>
+                <button className="button-confirm-sign"
+                    onClick={() => handleConfirm(form.email, form.password.value, form)}
+                >Cadastrar</button>
 
                 <Link to="/signIn" className="has-account-label" >Já possui uma conta? Faça login</Link>
 
