@@ -1,0 +1,19 @@
+.main-menu {
+    background-color: #1d2128;
+    height: 100dvh;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+
+}
+.container-icon {
+    display: flex;
+    align-items: center;
+}
+.title-menu {
+    font-size: 18pt;
+    margin-left: 6px;
+    color: #fff;
+    margin-bottom: 4px;
+}
