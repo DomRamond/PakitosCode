@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom"
 import Menu from "../../Components/Menu/Menu";
 
 export default function Main() {
-    /*const navigation = useNavigate()
+    const navigation = useNavigate()
     useEffect(() => { 
         // Será executado apenas 1 vez assim que a tela for carregada
-        navigation("/signUp")
+        navigation("/dashboard")
     }, []
-    )*/
+    )
     return (
         <div style={{
             backgroundColor: "#323842",

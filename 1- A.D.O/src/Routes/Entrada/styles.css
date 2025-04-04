@@ -1,0 +1,27 @@
+.main {
+    background-color: #323842;
+    display: flex;
+    width: 100%;
+    min-height: 100dvh;
+}
+.container-main {
+    width: 100%
+}
+.container-header {
+    background-color: #1d2128;
+    display: flex;
+    width: 100%;
+    padding: 6px;
+    align-items: center;
+}
+.title-page {
+    color: #fff;
+    font-size: 14pt;
+}
+.add-button {
+    background: none;
+    border: 1px solid #5ca9e7;
+    color: #5ca9e7;
+    padding: 6px 14px;
+    border-radius: 6px;
+}
