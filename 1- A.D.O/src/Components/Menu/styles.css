@@ -12,7 +12,7 @@
     align-items: center;
 }
 .icon-menu{
-    color: rgb(177, 177, 177);
+    color: #6e7787;
 }
 .title-menu {
     font-size: 18pt;
@@ -24,6 +24,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-top: 30px;
 }
 .container-item-menu {
     /*background-color: green;*/
@@ -37,5 +38,19 @@
 .label-item-menu {
     margin-left: 6px;
     font-size: 12pt;
-    color: rgb(177, 177, 177);
+    color: #6e7787;
+}
+.label-subtitle {
+    color: #6e7787;
+    font-weight: 600;
+    margin-bottom: 20px;
+    
+}
+.separator {
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f4f6;
+    height: 2px;
+    border-radius: 10px;
+    margin-top: 10px;
 }
