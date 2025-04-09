@@ -1,0 +1,66 @@
+.table-orators {
+    border: 0.5px solid #f3f4f6;
+    border-collapse: collapse;
+    display: flex;
+    border-radius: 8px;
+    flex-direction: column;
+    height: 95%;
+}
+
+.header-table-orators {
+    background-color: #2c3d59;
+    padding: 10px 0;
+    display: flex;
+    border-radius: 8px;
+}
+
+.header-item {
+    padding: 20px 6px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 10pt;
+    flex: 1;
+}
+
+.body-table-orators {
+
+}
+
+.body-item {
+    padding: 14px 6px;
+    font-size: 11pt;
+    flex: 1;
+    box-shadow: 0 0 0 0.3px #f3f4f6;
+    color: #171a1f;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: #b2dcff;
+}
+
+.input-checkbox {
+    width: 50px;
+    height: 50px;
+}
+
+.select-themes {
+    outline: none;
+    border: none;
+    background: none;
+    border-bottom-width: 2px;
+    border-bottom-color: #379ae6;
+    border-bottom-style: solid;
+    padding: 0 6px 4px 6px;
+
+}
+.button-confirmed{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 0;
+    border-radius: 5px;
+    border: 2px solid #636AE8;
+    background-color: #fff;
+    color: #636AE8;
+}

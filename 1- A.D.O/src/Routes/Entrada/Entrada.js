@@ -5,7 +5,7 @@ import { IoSearch } from "react-icons/io5";
 import { FaRegBell } from "react-icons/fa";
 import { GoDownload } from "react-icons/go";
 import { IoIosArrowDown } from "react-icons/io";
-import Checkbox from 'rc-checkbox';
+import Table from "./Table";
 
 export default function Entrada() {
     return (
@@ -56,29 +56,7 @@ export default function Entrada() {
                 </div>
 
                 <main style={{ display: "flex", flexDirection: 'column', height: '100%' }}>
-                    <table className="table-orators">
-                        <thead className="header-table-orators">
-                            <th className="header-item">DATA</th>
-                            <th className="header-item">ORADOR</th>
-                            <th className="header-item">CONGREGAÇÃO</th>
-                            <th className="header-item">Nº TEMA</th>
-                            <th className="header-item">CONFIRMADO</th>
-                            <th className="header-item">CONTATO</th>
-                            <th className="header-item">COMBUSTÍVEL</th>
-                            <th className="header-item">EDITAR</th>
-                        </thead>
-
-                        <tbody className="body-table-orators">
-                            <tb className="body-item">10 de Março</tb>
-                            <tb className="body-item">Cleiton</tb>
-                            <tb className="body-item">Oeste de Marataízes</tb>
-                            <tb className="body-item">45</tb>
-                            <tb className="body-item">SIM</tb>
-                            <tb className="body-item">28-99933-3435</tb>
-                            <tb className="body-item"><Checkbox /></tb>
-                            <tb className="body-item">EDITAR</tb>
-                        </tbody>
-                    </table>
+                    <Table />
                 </main>
 
             </div>
