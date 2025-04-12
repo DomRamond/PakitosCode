@@ -1,0 +1,6 @@
+.main {
+    background-color: #323842;
+    display: flex;
+    min-height: 100dvh;
+    position: relative;
+}

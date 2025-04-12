@@ -51,6 +51,7 @@
     border-bottom-color: #379ae6;
     border-bottom-style: solid;
     padding: 0 6px 4px 6px;
+    cursor: pointer;
 
 }
 .button-confirmed{
