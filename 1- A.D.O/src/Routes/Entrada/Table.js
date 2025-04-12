@@ -27,6 +27,7 @@ export default function Table() {
         }
     ])
 
+    // Gera dinamicamente a lista de números dos temas
     useEffect(() => {
         let list = []
         for (let index = 1; index <= 300; index++) {
@@ -34,6 +35,24 @@ export default function Table() {
         }
         setListThemes(list)
     }, [])
+
+    const onChangeConfirm = (index) => {
+        let list = [...data]
+        list[index] = { ...list[index], confirmed: !list[index].confirmed }
+        setData(list)
+    }
+
+    const onChangeFuel = (index) => {
+        let list = [...data]
+        list[index] = { ...list[index], fuel: !list[index].fuel }
+        setData(list)
+    }
+
+    const onChangeThemeNumber = (index, value) => {
+        let list = [...data]
+        list[index] = { ...list[index], number_theme: value }
+        setData(list)
+    }
 
     return (
         <table className="table-orators">
@@ -56,7 +75,12 @@ export default function Table() {
                             <td className="body-item">{item.orator}</td>
                             <td className="body-item">{item.congregation}</td>
                             <td className="body-item" style={{ maxWidth: 75 }}>
-                                <select className="select-themes" value={item.number_theme}>
+                                <select 
+                                className="select-themes" 
+                                value={item.number_theme} 
+                                onChange={(e) => onChangeThemeNumber(index, e.target.value)}
+                                
+                                >
                                     {listThemes.map((theme, idx) => {
                                         return <option key={idx} value={theme}>{theme}</option>;
                                     })}
@@ -64,11 +88,12 @@ export default function Table() {
                             </td>
                             <td className="body-item" style={{ maxWidth: 150 }}>
                                 <button className="button-confirmed"
-                                style={{color: !item.confirmed && "red"}}
+                                    style={{ color: !item.confirmed && "red" }}
+                                    onClick={() => onChangeConfirm(index)}
                                 >{item.confirmed ? "SIM" : "NÃO"}</button>
                             </td>
                             <td style={{ color: '#636AE8', fontWeight: '500', maxWidth: 130 }} className="body-item">{item.contact}</td>
-                            <td className="body-item" style={{ maxWidth: 120 }}><Checkbox checked={item.fuel} /></td>
+                            <td className="body-item" style={{ maxWidth: 120 }}><Checkbox checked={item.fuel} onChange={() => onChangeFuel(index)} /></td>
                             <td style={{ gap: 5, maxWidth: 80 }} className="body-item" >
                                 <span>
                                     <TbTrashX size={28} color="#4076a2" />
