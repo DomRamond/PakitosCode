@@ -3,12 +3,13 @@ import "./tableStyles.css"
 import Checkbox from 'rc-checkbox';
 import { TbTrashX } from "react-icons/tb";
 import { AiOutlineSync } from "react-icons/ai";
+import { format } from "date-fns"
 
-export default function Table() {
+export default function Table({ filter }) {
     const [listThemes, setListThemes] = useState([])
     const [data, setData] = useState([
         {
-            date: '10/04/2025',
+            date: new Date(),
             orator: 'Juninho',
             congregation: 'Oeste de Piúma',
             number_theme: 17,
@@ -17,7 +18,7 @@ export default function Table() {
             fuel: true
         },
         {
-            date: '14/10/2025',
+            date: new Date(),
             orator: 'Zézinho',
             congregation: 'Norte de Vitória',
             number_theme: 63,
@@ -26,6 +27,13 @@ export default function Table() {
             fuel: false
         }
     ])
+
+    // Carrega e atualiza a tabela com filtros
+    useEffect(() => {
+        if (filter != '') {
+            //const filteredList = data.filter(item => { item.date.getFullYear === filter })
+        }
+    }, [filter])
 
     // Gera dinamicamente a lista de números dos temas
     useEffect(() => {
@@ -71,15 +79,15 @@ export default function Table() {
                 {data.map((item, index) => {
                     return (
                         <tr key={index} style={{ display: 'flex' }}>
-                            <td style={{ fontWeight: 'bold', maxWidth: 120 }} className="body-item">{item.date}</td>
+                            <td style={{ fontWeight: 'bold', maxWidth: 120 }} className="body-item">{format(item.date, "dd/MM/yyyy")}</td>
                             <td className="body-item">{item.orator}</td>
                             <td className="body-item">{item.congregation}</td>
                             <td className="body-item" style={{ maxWidth: 75 }}>
-                                <select 
-                                className="select-themes" 
-                                value={item.number_theme} 
-                                onChange={(e) => onChangeThemeNumber(index, e.target.value)}
-                                
+                                <select
+                                    className="select-themes"
+                                    value={item.number_theme}
+                                    onChange={(e) => onChangeThemeNumber(index, e.target.value)}
+
                                 >
                                     {listThemes.map((theme, idx) => {
                                         return <option key={idx} value={theme}>{theme}</option>;

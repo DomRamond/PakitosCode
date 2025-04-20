@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useCallback, useState } from "react"
 import Menu from "../../Components/Menu/Menu"
 import "./styles.css"
 import { IoSearch } from "react-icons/io5";
@@ -8,6 +8,19 @@ import { IoIosArrowDown } from "react-icons/io";
 import Table from "./Table";
 
 export default function Entrada() {
+
+    const [yearFilter, setYearFilter] = useState(new Date().getFullYear())
+
+    const generateYears = useCallback(() => {
+        const current_year = new Date().getFullYear()
+        const years = []
+
+        for (let count = 0; count <= 5; count++) {
+            years.push(<option value={current_year - count}>{current_year - count}</option>)
+        }
+        return years
+    }, [])
+
     return (
         <div className="main">
             <Menu item_active={2} />
@@ -21,8 +34,8 @@ export default function Entrada() {
                     </span>
                     <h1 className="title-page">Entrada de oradores à congregação</h1>
 
-                    <select className="year-select">
-                        <option>2025</option>
+                    <select className="year-select" onChange={e => setYearFilter(e.target.value)}>
+                        {generateYears()}
                     </select>
 
                     <button className="add-button">
@@ -56,7 +69,7 @@ export default function Entrada() {
                 </div>
 
                 <main style={{ display: "flex", flexDirection: 'column', height: '100%' }}>
-                    <Table />
+                    <Table filter={yearFilter} />
                 </main>
 
             </div>
